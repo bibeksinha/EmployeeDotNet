@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Employee Page";
+}
+
+<div class="text-center">
+    @model StdAusTest.Models.Root
+    <h1 class="display-4">Welcome to Employee Details</h1>
+    <table class="table">
+        <thead>
+            @using (Html.BeginForm("AddEmployee", "Home", FormMethod.Post))
+            {
+                <tr>
+                    First Name:      @Html.EditorFor(m => m.employee.first_name)
+                </tr>
+                <tr>
+                    Last Name:      @Html.EditorFor(m => m.employee.last_name)
+                </tr>
+                <tr>
+                    Email:      @Html.EditorFor(m => m.employee.email)
+                </tr>
+                <tr>
+                    Gender:      @Html.EditorFor(m => m.employee.gender)
+                </tr>
+                <tr>
+                    Status:      @Html.EditorFor(m => m.employee.status)
+                </tr>
+                <br />
+                <br />
+                <input id="Submit" type="submit" value="submit" />
+            }
+            <br />
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                   First Name
+                </th>
+                <th>
+                   Last Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                   Gender
+                </th>
+                <th>
+                   Status
+                </th>
+            </tr>
+            @foreach (Result item in Model.result)
+            {
+              <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.first_name)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.last_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.status)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
